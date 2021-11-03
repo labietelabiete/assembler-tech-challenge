@@ -67,7 +67,7 @@ dotenv.config();
 const {
   MONGO_DB_URL,
   PORT,
-  // GIPHY_API_KEY,
+  GIPHY_API_KEY,
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET,
   CLOUDINARY_NAME,
@@ -85,9 +85,9 @@ const CONFIG = {
     secret: CLOUDINARY_API_SECRET,
     name: CLOUDINARY_NAME,
   },
-  // giphy: {
-  //   apiKey: GIPHY_API_KEY,
-  // },
+  giphy: {
+    apiKey: GIPHY_API_KEY,
+  },
 };
 
 module.exports = {
