@@ -1,0 +1,45 @@
+$primaryColor: #121212;
+$secondaryColor: #665cff;
+$terciaryColor: #04fe99;
+$quaternaryColor: #f4f35e;
+$whiteColor: #ffffff;
+
+.clr-primary {
+  color: $primaryColor;
+}
+
+.clr-secondary {
+  color: $secondaryColor;
+}
+
+.clr-terciary {
+  color: $terciaryColor;
+}
+
+.clr-quaternary {
+  color: $quaternaryColor;
+}
+
+.clr-white {
+  color: $whiteColor;
+}
+
+.bgr-primary {
+  background-color: $primaryColor;
+}
+
+.bgr-secondary {
+  background-color: $secondaryColor;
+}
+
+.bgr-terciary {
+  background-color: $terciaryColor;
+}
+
+.bgr-quaternary {
+  background-color: $quaternaryColor;
+}
+
+.bgr-white {
+  background-color: $whiteColor;
+}

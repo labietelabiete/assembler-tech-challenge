@@ -39,13 +39,9 @@ async function signUp(req, res) {
 // GET client
 async function getById(req, res) {
   try {
-    console.log("Entro en getbyid");
-    console.log(req.params);
-
     const { id } = req.params;
 
     const data = await db.User.findOne({ _id: id });
-    // const data = await db.Client.findOne({ email });
     res.status(200).send({ data });
   } catch (error) {
     res.status(500).send({ error: error.message });
