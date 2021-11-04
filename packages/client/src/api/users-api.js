@@ -8,6 +8,13 @@ export function makeUsersApi() {
   });
 }
 
-export async function createUser(data, api = makeUsersApi()) {
+export async function signUp(data, api = makeUsersApi()) {
   return api.post(`/signup`, data, {});
 }
+
+export async function signIn(data, api = makeUsersApi()) {
+  return api.post(`/signin`, data, {});
+}
+
+
+

@@ -7,24 +7,23 @@ import Layout from "../../../components/Layout";
 import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 
-import signUpSchema from "./sign-up-schema";
+import signInSchema from "./sign-in-schema";
 import { PUBLIC } from "../../../constants/routes";
 
-import { signUp } from "../../../api/users-api";
+import { signIn } from "../../../api/users-api";
 
-export default function SignUp() {
+export default function SignIn() {
   const [loading, setLoading] = useState(false);
 
   const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
-      userName: "",
       email: "",
       password: "",
     },
-    validationSchema: signUpSchema,
-    onSubmit: async (signUpState) => {
+    validationSchema: signInSchema,
+    onSubmit: async (signInState) => {
       setLoading(true);
       try {
         // const formData = new FormData();
@@ -34,14 +33,13 @@ export default function SignUp() {
         // await createUser(formData);
 
         var data = {
-          userName: signUpState.userName,
-          email: signUpState.email,
-          password: signUpState.password,
+          email: signInState.email,
+          password: signInState.password,
         };
-        await signUp(data);
-        toast("Signed up!", { type: "success" });
+        await signIn(data);
+        toast("Signed in!", { type: "success" });
         setTimeout(() => {
-          history.push(PUBLIC.SIGN_IN);
+          history.push(PUBLIC.HOME);
         }, 3000);
       } catch (error) {
         toast(error.message, { type: "error" });
@@ -55,21 +53,8 @@ export default function SignUp() {
       <div className="container bgr-primary clr-white">
         <div className="row">
           <div className="col-12">
-            <h1 className="mb-4">Sign Up</h1>
+            <h1 className="mb-4">Sign In</h1>
             <form onSubmit={formik.handleSubmit} className="row">
-              <Input
-                classNames="col-12"
-                label="Username"
-                id="userName"
-                type="text"
-                placeholder="Username"
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                value={formik.values.userName}
-                errorMessage={formik.errors.userName}
-                hasErrorMessage={formik.touched.userName}
-                disabled={loading}
-              />
               <Input
                 classNames="col-12"
                 label="Email"
@@ -98,7 +83,7 @@ export default function SignUp() {
               />
               <div className="p-2 text-end">
                 <Button classNames="p-2" secondaryBtn type="submit">
-                  Sign Up
+                  Sign In
                 </Button>
               </div>
             </form>
