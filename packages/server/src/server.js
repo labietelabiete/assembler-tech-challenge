@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const { userRouter } = require("./routes");
+const { gifRouter } = require("./routes");
+
 
 const app = express();
 
@@ -15,5 +17,6 @@ app.use(helmet());
 app.use(cors());
 
 app.use("/users", userRouter);
+app.use("/gifs", gifRouter);
 
 module.exports = app;
