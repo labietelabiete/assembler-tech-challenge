@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -8,12 +9,17 @@ import Input from "../../../components/Input";
 import Button from "../../../components/Button";
 
 import signInSchema from "./sign-in-schema";
-import { PUBLIC } from "../../../constants/routes";
+// import { PUBLIC } from "../../../constants/routes";
+
+import { logIn, logOut } from "../../../redux/user/actions";
 
 import { signIn } from "../../../api/users-api";
 
 export default function SignIn() {
   const [loading, setLoading] = useState(false);
+  const userState = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   const history = useHistory();
 
@@ -36,9 +42,17 @@ export default function SignIn() {
           email: signInState.email,
           password: signInState.password,
         };
-        await signIn(data);
+        const signInData = await signIn(data);
+        const userData = signInData.data.data;
+        const userRedux = {
+          isLogged: true,
+          userName: userData.userName,
+          email: userData.email,
+        };
+        dispatch(logIn(userRedux));
+
         toast("Signed in!", { type: "success" });
-        history.push(PUBLIC.HOME);
+        // history.push(PUBLIC.HOME);
       } catch (error) {
         toast(error.message, { type: "error" });
       }

@@ -13,6 +13,7 @@ async function signIn(req, res) {
       {
         userName: 1,
         password: 1,
+        email: 1,
       },
     ).lean();
     console.log(data);
