@@ -39,10 +39,9 @@ export default function SignUp() {
           password: signUpState.password,
         };
         await createUser(data);
-        toast(" Signed up!", { type: "success" });
-
+        toast("Signed up!", { type: "success" });
         setTimeout(() => {
-          history.push(PUBLIC.HOME);
+          history.push(PUBLIC.SIGN_IN);
         }, 3000);
       } catch (error) {
         toast(error.message, { type: "error" });
