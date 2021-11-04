@@ -3,16 +3,25 @@ const db = require("../models");
 // Sign in
 async function signIn(req, res) {
   try {
-    const { email } = req.client;
+    const { email, password } = req.body;
 
     const data = await db.User.findOne(
       {
         email: email,
       },
-      { _id: 1 },
-    );
-
-    res.status(200).send({ message: "Successfully signed in", userId: data });
+      {
+        userName: 1,
+        password: 1,
+      },
+    ).lean();
+    console.log(data);
+    if (data && data.password === password) {
+      res.status(200).send({ message: "Successfully signed in", data: data });
+    } else {
+      res
+        .status(410)
+        .send({ message: "Email does not exist or wrong password" });
+    }
   } catch (error) {
     res.status(500).send({ error: error.message });
   }

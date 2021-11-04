@@ -38,9 +38,7 @@ export default function SignIn() {
         };
         await signIn(data);
         toast("Signed in!", { type: "success" });
-        setTimeout(() => {
-          history.push(PUBLIC.HOME);
-        }, 3000);
+        history.push(PUBLIC.HOME);
       } catch (error) {
         toast(error.message, { type: "error" });
       }
