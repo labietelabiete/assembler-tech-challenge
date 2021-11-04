@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { IconContext } from "react-icons";
-// import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { FaSearch } from "react-icons/fa";
 
-// import Button from "../Button";
+import Button from "../Button";
 
-// import { PUBLIC } from "../../constants/routes";
+import { PUBLIC } from "../../constants/routes";
 
 import "./Input.scss";
 
@@ -17,20 +17,15 @@ export default function Input({
   isNegative = false,
   fullWidth = false,
   placeholder = "",
-  inputFileText = "Choose your file",
-  acceptFiles = "image/*",
   handleChange = () => {},
   handleBlur = () => {},
   handleInput = () => {},
-  hasSubmitIcon,
   errorMessage,
   hasErrorMessage,
   hasForgotPassword,
   ...props
 }) {
-  const componentClasses = `${classNames} custom-input d-flex flex-column mb-3`;
-  const errorClassNames =
-    "col col-12 error-msg fnt-smallest mt-2 mb-0 ps-3 w-100";
+  const errorClassNames = "col col-12 clr-error mt-2 mb-0 w-100";
 
   let labelClassNames = "fnt-label-bold p-0 mb-2 ";
   let inputClassNames = "fnt-input-light fx-rounded ps-3 ";
@@ -48,11 +43,7 @@ export default function Input({
   }
 
   return (
-    <div
-      className={
-        hasSubmitIcon ? `${componentClasses} px-0 ` : `${componentClasses}`
-      }
-    >
+    <div>
       {label ? (
         <label className={labelClassNames} htmlFor={id}>
           {label}
@@ -62,20 +53,10 @@ export default function Input({
           &nbsp;
         </label>
       )}
-      <div
-        className={
-          hasSubmitIcon
-            ? "d-flex justify-content-between px-3"
-            : "col col-12 p-0"
-        }
-      >
+      <div>
         <input
           type={type}
-          className={
-            hasSubmitIcon
-              ? `${inputClassNames} flex-search flex-grow-1 px-0`
-              : `${inputClassNames} form-input col-12`
-          }
+          className="p-1 form-input col-12"
           id={id}
           name={id}
           placeholder={placeholder}

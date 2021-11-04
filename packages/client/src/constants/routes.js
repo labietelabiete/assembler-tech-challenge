@@ -6,3 +6,10 @@ export const PUBLIC = {
   GIF: "/gif",
   SEARCH: "/search",
 };
+
+// API
+
+export const API = {
+  MAIN: "http://localhost:4000",
+  USERS: "/users",
+};

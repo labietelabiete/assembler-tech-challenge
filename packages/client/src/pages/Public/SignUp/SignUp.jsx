@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Layout from "../../../components/Layout";
@@ -9,6 +9,8 @@ import Button from "../../../components/Button";
 
 import signUpSchema from "./sign-up-schema";
 import { PUBLIC } from "../../../constants/routes";
+
+import { createUser } from "../../../api/users-api";
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -25,11 +27,19 @@ export default function SignUp() {
     onSubmit: async (signUpState) => {
       setLoading(true);
       try {
-        const formData = new FormData();
-        formData.append("userName", signUpState.firstName);
-        formData.append("email", signUpState.email);
-        // await createClient(formData);
-        toast(" Signed up!", { type: "warning" });
+        // const formData = new FormData();
+        // formData.append("userName", signUpState.userName);
+        // formData.append("email", signUpState.email);
+        // formData.append("password", signUpState.password);
+        // await createUser(formData);
+
+        var data = {
+          userName: signUpState.userName,
+          email: signUpState.email,
+          password: signUpState.password,
+        };
+        await createUser(data);
+        toast(" Signed up!", { type: "success" });
 
         setTimeout(() => {
           history.push(PUBLIC.HOME);
@@ -46,17 +56,17 @@ export default function SignUp() {
       <div className="container bgr-primary clr-white">
         <div className="row">
           <div className="col-12">
-            <h1>Sign Up</h1>
+            <h1 className="mb-4">Sign Up</h1>
             <form onSubmit={formik.handleSubmit} className="row">
               <Input
                 classNames="col-12"
                 label="Username"
-                id="firstName"
+                id="userName"
                 type="text"
                 placeholder="Username"
                 handleChange={formik.handleChange}
                 handleBlur={formik.handleBlur}
-                value={formik.values.firstName}
+                value={formik.values.userName}
                 errorMessage={formik.errors.userName}
                 hasErrorMessage={formik.touched.userName}
                 disabled={loading}
@@ -87,8 +97,8 @@ export default function SignUp() {
                 hasErrorMessage={formik.touched.password}
                 disabled={loading.isLoading || loading.isError}
               />
-              <div className="p-2">
-                <Button className="primaryBtn" type="submit">
+              <div className="p-2 text-end">
+                <Button classNames="p-2" secondaryBtn type="submit">
                   Sign Up
                 </Button>
               </div>

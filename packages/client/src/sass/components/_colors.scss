@@ -3,6 +3,11 @@ $secondaryColor: #665cff;
 $terciaryColor: #04fe99;
 $quaternaryColor: #f4f35e;
 $whiteColor: #ffffff;
+$errorColor: #f4635e;
+
+:root {
+  --toastify-color-error: rgba(218, 95, 100, 1);
+}
 
 .clr-primary {
   color: $primaryColor;
@@ -22,6 +27,10 @@ $whiteColor: #ffffff;
 
 .clr-white {
   color: $whiteColor;
+}
+
+.clr-error{
+  color: $errorColor;
 }
 
 .bgr-primary {

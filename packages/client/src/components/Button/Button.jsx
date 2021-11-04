@@ -3,7 +3,7 @@ import React from "react";
 import "./Button.scss";
 
 export default function Button({
-  primaryBtn = true,
+  primaryBtn = false,
   secondaryBtn = false,
   terciaryBtn = false,
   quaternaryBtn = false,
@@ -15,7 +15,7 @@ export default function Button({
   handleClick = () => {},
   ...props
 }) {
-  let btnclassNames = `${classNames} custom-btn fx-rounded d-flex align-items-center justify-content-center clr-white`;
+  let btnclassNames = `${classNames} clr-white rounded `;
 
   if (primaryBtn) {
     btnclassNames += "bgr-primary ";

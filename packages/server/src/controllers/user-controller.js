@@ -21,16 +21,17 @@ async function signIn(req, res) {
 // Sign up
 async function signUp(req, res) {
   try {
-    const { userName } = req.body;
-    const { email } = req.body;
-
+    const { userName, email, password } = req.body;
+    console.log(req.body);
     const data = await db.User.create({
       userName: userName,
       email: email,
+      password: password,
     });
-    res
-      .status(200)
-      .send({ message: "Successfully signed up", userId: data._id });
+    res.status(200).send({
+      message: "Successfully signed up",
+      userId: data._id,
+    });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
