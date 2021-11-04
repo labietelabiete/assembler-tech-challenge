@@ -4,6 +4,7 @@ const db = require("../models");
 async function signIn(req, res) {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
 
     const data = await db.User.findOne(
       {
@@ -19,7 +20,7 @@ async function signIn(req, res) {
       res.status(200).send({ message: "Successfully signed in", data: data });
     } else {
       res
-        .status(410)
+        .status(404)
         .send({ message: "Email does not exist or wrong password" });
     }
   } catch (error) {

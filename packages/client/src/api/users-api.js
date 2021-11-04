@@ -13,5 +13,5 @@ export async function signUp(data, api = makeUsersApi()) {
 }
 
 export async function signIn(data, api = makeUsersApi()) {
-  return api.get(`/signin`, data, {});
+  return api.post(`/signin`, data, {});
 }

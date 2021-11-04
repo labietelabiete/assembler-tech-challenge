@@ -1,11 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { IconContext } from "react-icons";
-import { FaSearch } from "react-icons/fa";
-
-import Button from "../Button";
-
-import { PUBLIC } from "../../constants/routes";
+import React from "react";
 
 import "./Input.scss";
 
@@ -28,18 +21,11 @@ export default function Input({
   const errorClassNames = "col col-12 clr-error mt-2 mb-0 w-100";
 
   let labelClassNames = "fnt-label-bold p-0 mb-2 ";
-  let inputClassNames = "fnt-input-light fx-rounded ps-3 ";
 
   if (isNegative) {
     labelClassNames += "negative-label";
-    inputClassNames += "negative-input";
   } else {
     labelClassNames += "positive-label";
-    inputClassNames += "positive-input";
-  }
-
-  if (fullWidth) {
-    inputClassNames += " w-100";
   }
 
   return (

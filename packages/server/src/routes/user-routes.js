@@ -4,7 +4,7 @@ const Router = require("express").Router;
 // Declaring router
 const userRouter = Router();
 
-userRouter.get("/signin", userController.signIn);
+userRouter.post("/signin", userController.signIn);
 
 userRouter.post("/signup", userController.signUp);
 
