@@ -44,7 +44,7 @@ export default function AddGif() {
         formData.append("email", userState.email);
 
         await uploadGif(formData);
-        // history.push(PUBLIC.HOME);
+        history.push(PUBLIC.HOME);
         toast("Gif upload successfully!", { type: "success" });
       } catch (error) {
         toast(error.message, { type: "error" });

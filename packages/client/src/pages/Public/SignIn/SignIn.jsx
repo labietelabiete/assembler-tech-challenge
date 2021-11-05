@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 import Layout from "../../../components/Layout";
@@ -64,7 +66,7 @@ export default function SignIn() {
       <div className="container bgr-primary clr-white">
         <div className="row">
           <div className="col-12">
-            <h1 className="mb-4">Sign In</h1>
+            <h1 className="my-4">Sign In</h1>
             <form onSubmit={formik.handleSubmit} className="row">
               <Input
                 classNames="col-12"
@@ -92,7 +94,17 @@ export default function SignIn() {
                 hasErrorMessage={formik.touched.password}
                 disabled={loading.isLoading || loading.isError}
               />
-              <div className="p-2 text-end">
+              <div className="p-2 d-flex justify-content-between">
+                <p>
+                  Don't you have an account, sign up{" "}
+                  <Link
+                    to={{
+                      pathname: PUBLIC.SIGN_UP,
+                    }}
+                  >
+                    here
+                  </Link>
+                </p>
                 <Button classNames="p-2" secondaryBtn type="submit">
                   Sign In
                 </Button>
