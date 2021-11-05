@@ -63,7 +63,41 @@ async function addGif(req, res, next) {
   }
 }
 
-async function getAll() {}
+async function getAll(req, res, next) {
+  try {
+    const { page = 0, limit = 8 } = req.query;
+
+    const gifs = await db.Gif.aggregate([
+      {
+        $project: {
+          title: 1,
+          category: 1,
+          url: 1,
+          userId: 1,
+        },
+      },
+      {
+        $sort: {
+          likes: -1,
+        },
+      },
+      { $limit: parseInt(limit) },
+      { $skip: parseInt(page) * parseInt(limit) },
+    ]);
+
+    await db.Gif.populate(gifs, {
+      path: "userId",
+      option: { select: "userName" },
+    });
+
+    res.status(200).send({ gifs });
+  } catch (error) {
+    res.status(500).send({
+      error: error.message,
+    });
+    next(error);
+  }
+}
 
 async function getById() {}
 
