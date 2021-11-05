@@ -7,8 +7,6 @@ const writeFileAsync = promisify(fs.writeFile);
 
 async function addGif(req, res, next) {
   try {
-    console.log(req.body, "request body");
-    console.log(req.files["urlFile"]);
     const { title, category, url, email } = req.body;
     const { _id: userId } = await db.User.findOne(
       { email: email },
