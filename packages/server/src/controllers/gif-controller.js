@@ -74,11 +74,12 @@ async function getAll(req, res, next) {
           category: 1,
           url: 1,
           userId: 1,
+          createdAt: 1,
         },
       },
       {
         $sort: {
-          likes: -1,
+          createdAt: -1,
         },
       },
       { $limit: parseInt(limit) },
