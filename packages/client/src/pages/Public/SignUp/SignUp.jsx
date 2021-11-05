@@ -27,12 +27,6 @@ export default function SignUp() {
     onSubmit: async (signUpState) => {
       setLoading(true);
       try {
-        // const formData = new FormData();
-        // formData.append("userName", signUpState.userName);
-        // formData.append("email", signUpState.email);
-        // formData.append("password", signUpState.password);
-        // await createUser(formData);
-
         var data = {
           userName: signUpState.userName,
           email: signUpState.email,

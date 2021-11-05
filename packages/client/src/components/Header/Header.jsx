@@ -60,7 +60,7 @@ export default function Header() {
                 pathname: PUBLIC.SIGN_IN,
               }}
             >
-              <Button classNames="px-2" secondaryBtn>
+              <Button classNames="p-2" secondaryBtn>
                 Sign In
               </Button>
             </Link>

@@ -33,12 +33,6 @@ export default function SignIn() {
     onSubmit: async (signInState) => {
       setLoading(true);
       try {
-        // const formData = new FormData();
-        // formData.append("userName", signUpState.userName);
-        // formData.append("email", signUpState.email);
-        // formData.append("password", signUpState.password);
-        // await createUser(formData);
-
         var data = {
           email: signInState.email,
           password: signInState.password,
@@ -96,7 +90,7 @@ export default function SignIn() {
               />
               <div className="p-2 d-flex justify-content-between">
                 <p>
-                  Don't you have an account, sign up{" "}
+                  Don't you have an account? sign up{" "}
                   <Link
                     to={{
                       pathname: PUBLIC.SIGN_UP,

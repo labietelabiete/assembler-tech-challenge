@@ -8,12 +8,12 @@ export default function GifList({ title, gifs }) {
       <h1 className="mb-4">{title}</h1>
       {gifs.map((gif) => (
         <GifCard
-          key={gif._id}
-          gifId={gif._Id}
+          key={gif.id}
+          gifId={gif.id}
           gifTitle={gif.title}
-          gifCategory={gif.category}
-          gifUrl={gif.url}
-          gifUserName={gif.userId.userName}
+          gifCategory={gif.type}
+          gifUrl={gif.images.fixed_height.url}
+          gifUserName={gif.username}
         />
       ))}
     </div>
