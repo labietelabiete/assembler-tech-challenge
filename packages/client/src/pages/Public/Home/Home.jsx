@@ -5,6 +5,7 @@ import Layout from "../../../components/Layout";
 import GifList from "../../../components/GifList";
 
 import { getAllGifs } from "../../../api/gifs-api";
+import { getTrendingGifs } from "../../../services/giphy/giphy-api";
 
 export default function Home() {
   const [userGifs, setUserGifs] = useState([]);
@@ -12,9 +13,16 @@ export default function Home() {
   async function fetchUserGifs() {
     try {
       const data = await getAllGifs();
-
-      console.log(data.data.gifs);
       setUserGifs(data.data.gifs);
+    } catch (error) {
+      toast(error.message, { type: "error" });
+    }
+  }
+
+  async function fetchTrendingGifs() {
+    try {
+      const data = await getTrendingGifs();
+      console.log(data);
     } catch (error) {
       toast(error.message, { type: "error" });
     }
@@ -22,6 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchUserGifs();
+    fetchTrendingGifs();
   }, []);
 
   return (
