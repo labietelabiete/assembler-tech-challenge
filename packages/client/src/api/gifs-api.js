@@ -11,7 +11,7 @@ export function makeGifsApi() {
 export async function uploadGif(file = {}, api = makeGifsApi()) {
   return api.post(``, file, {
     headers: {
-      "Content-Type": `multipart/form-data"`,
+      "Content-Type": `multipart/form-data`,
     },
   });
 }

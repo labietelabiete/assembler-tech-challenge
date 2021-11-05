@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Layout from "../../../components/Layout";
 import Input from "../../../components/Input";
@@ -22,7 +22,7 @@ export default function AddGif() {
   const formik = useFormik({
     initialValues: {
       title: "",
-      category: "",
+      category: "Games",
       url: "",
       urlFile: "",
       email: "",
@@ -31,15 +31,19 @@ export default function AddGif() {
     onSubmit: async (addGifState) => {
       setLoadStatus(true);
       try {
+        console.log(addGifState.title);
+        console.log(addGifState.category);
+        console.log(addGifState.url);
         console.log(addGifState.urlFile);
+        console.log(userState.email);
         const formData = new FormData();
         formData.append("title", addGifState.title);
         formData.append("category", addGifState.category);
         formData.append("url", addGifState.url);
         formData.append("urlFile", addGifState.urlFile);
-        formData.append("birthDate", userState.email);
+        formData.append("email", userState.email);
 
-        // await uploadGif(formData);
+        await uploadGif(formData);
         // history.push(PUBLIC.HOME);
         toast("Gif upload successfully!", { type: "success" });
       } catch (error) {
