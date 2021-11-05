@@ -11,6 +11,8 @@ import { logOut } from "../../redux/user/actions";
 
 import "./Header.scss";
 
+import logo from "./../../utils/logo.png";
+
 export default function Header() {
   const userState = useSelector((state) => state.user);
 
@@ -24,8 +26,14 @@ export default function Header() {
 
   return (
     <header className="px-5 py-5 h-60 align-items-center d-flex justify-content-between bgr-primary">
-      <div className="left-wrapper-header d-flex">
-        <div className="logo">Logo</div>
+      <div className="left-wrapper-header d-flex align-items-center">
+        <Link
+          to={{
+            pathname: PUBLIC.HOME,
+          }}
+        >
+          <img className="logo" src={logo} alt="logo" />
+        </Link>
         <div className="search-bar">Search</div>
       </div>
       <div className="right-wrapper-header d-flex align-items-center">
