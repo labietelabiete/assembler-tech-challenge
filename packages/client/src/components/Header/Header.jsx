@@ -1,10 +1,13 @@
 import React from "react";
+import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
+import Input from "../../components/Input";
 import Button from "../../components/Button";
 
+import searchSchema from "./search-schema";
 import { PUBLIC } from "../../constants/routes";
 
 import { logOut } from "../../redux/user/actions";
@@ -19,6 +22,17 @@ export default function Header() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const formik = useFormik({
+    initialValues: {
+      searchBar: "",
+    },
+    validationSchema: searchSchema,
+    onSubmit: (formikState) => {
+      if (formikState.searchBar !== "")
+        history.push(`${PUBLIC.SEARCH}?q=${formikState.searchBar}`);
+    },
+  });
+
   const handleSignOut = () => {
     dispatch(logOut());
     history.push(PUBLIC.HOME);
@@ -32,9 +46,26 @@ export default function Header() {
             pathname: PUBLIC.HOME,
           }}
         >
-          <img className="logo" src={logo} alt="logo" />
+          <img className="logo me-5" src={logo} alt="logo" />
         </Link>
-        <div className="search-bar">Search</div>
+        <form onSubmit={formik.handleSubmit} className="d-flex align-items-center ms-5">
+          <Input
+            classNames="col-12"
+            id="searchBar"
+            type="text"
+            placeholder="Search"
+            handleChange={formik.handleChange}
+            handleBlur={formik.handleBlur}
+            value={formik.values.searchBar}
+            errorMessage={formik.errors.searchBar}
+            hasErrorMessage={formik.touched.searchBar}
+          />
+          <div className="p-1">
+            <Button classNames="p-1" quaternaryBtn type="submit">
+              Search
+            </Button>
+          </div>
+        </form>
       </div>
       <div className="right-wrapper-header d-flex align-items-center">
         {userState.isLogged && (

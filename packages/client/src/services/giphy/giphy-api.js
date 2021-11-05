@@ -21,7 +21,7 @@ async function getTrendingGifs(limit = 8, offset = 0, api = makeGiphyApi()) {
   );
 }
 
-async function searchGifs(query, limit = 20, offset = 0, api = makeGiphyApi()) {
+async function searchGiphy(query, limit = 8, offset = 0, api = makeGiphyApi()) {
   return api.get(
     `${API_ROUTES.GIFS}${API_ROUTES.SEARCH}?api_key=${REACT_APP_GIPHY_API_KEY}&q=${query}&limit=${limit}&offset=${offset}&rating=g&bundle=messaging_non_clips`
   );
@@ -29,5 +29,5 @@ async function searchGifs(query, limit = 20, offset = 0, api = makeGiphyApi()) {
 
 module.exports = {
   getTrendingGifs,
-  searchGifs,
+  searchGiphy,
 };
