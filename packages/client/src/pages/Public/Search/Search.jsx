@@ -18,7 +18,7 @@ export default function Search() {
 
   async function userGifSearch(searchParam) {
     try {
-      const { data } = await searchGifs(searchParam, 0, 7);
+      const { data } = await searchGifs(searchParam, 0, 8);
       console.log(data, "user data");
       setUserGifsFound(data.gifs);
     } catch (error) {

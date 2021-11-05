@@ -25,8 +25,6 @@ async function searchGif(req, res, next) {
       option: { select: "userName" },
     });
 
-    console.log(gifs);
-
     return res
       .status(200)
       .send({ message: "Successfully searched", gifs: gifs });
