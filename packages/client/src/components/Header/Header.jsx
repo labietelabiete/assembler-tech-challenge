@@ -23,7 +23,7 @@ export default function Header() {
   };
 
   return (
-    <header className="px-5 py-5 h-60 align-items-center d-flex justify-content-between">
+    <header className="px-5 py-5 h-60 align-items-center d-flex justify-content-between bgr-primary">
       <div className="left-wrapper-header d-flex">
         <div className="logo">Logo</div>
         <div className="search-bar">Search</div>

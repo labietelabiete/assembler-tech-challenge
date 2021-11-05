@@ -13,7 +13,7 @@ export default function Home() {
     try {
       const data = await getAllGifs();
 
-      console.log(data.data);
+      console.log(data.data.gifs);
       setUserGifs(data.data.gifs);
     } catch (error) {
       toast(error.message, { type: "error" });
@@ -26,7 +26,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <GifList title="Last Users Gifs" gifs={userGifs} />
+      <div className="container bgr-primary clr-white">
+        <GifList title="Last Users Gifs" gifs={userGifs} />
+      </div>
     </Layout>
   );
 }
