@@ -1,4 +1,3 @@
-
 export const PUBLIC = {
   HOME: "/",
   SIGN_UP: "/sign-up",
