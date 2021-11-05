@@ -18,7 +18,7 @@ export default function Search() {
 
   async function userGifSearch(searchParam) {
     try {
-      const { data } = await searchGifs(searchParam, 0, 8);
+      const { data } = await searchGifs(searchParam, 0, 16);
       console.log(data, "user data");
       setUserGifsFound(data.gifs);
     } catch (error) {
@@ -28,7 +28,7 @@ export default function Search() {
 
   async function giphyGifSearch(searchParam) {
     try {
-      const { data } = await searchGiphy(searchParam, 0, 7);
+      const { data } = await searchGiphy(searchParam, 16, 0);
       console.log(data, "giphy data");
       setGiphyGifsFound(data.data);
     } catch (error) {
