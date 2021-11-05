@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
@@ -28,8 +29,10 @@ export default function Header() {
     },
     validationSchema: searchSchema,
     onSubmit: (formikState) => {
-      if (formikState.searchBar !== "")
+      if (formikState.searchBar !== "") {
         history.push(`${PUBLIC.SEARCH}?q=${formikState.searchBar}`);
+        history.go(0);
+      }
     },
   });
 
@@ -48,7 +51,10 @@ export default function Header() {
         >
           <img className="logo me-5" src={logo} alt="logo" />
         </Link>
-        <form onSubmit={formik.handleSubmit} className="d-flex align-items-center ms-5">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="d-flex align-items-center ms-5"
+        >
           <Input
             classNames="col-12"
             id="searchBar"

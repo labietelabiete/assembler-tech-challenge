@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const { userRouter } = require("./routes");
 const { gifRouter } = require("./routes");
-
+const { searchRouter } = require("./routes");
 
 const app = express();
 
@@ -18,5 +18,6 @@ app.use(cors());
 
 app.use("/users", userRouter);
 app.use("/gifs", gifRouter);
+app.use("/search", searchRouter);
 
 module.exports = app;
