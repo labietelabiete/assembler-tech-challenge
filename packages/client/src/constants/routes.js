@@ -12,4 +12,5 @@ export const PUBLIC = {
 export const API = {
   MAIN: "http://localhost:4000",
   USERS: "/users",
+  GIFS: "/gifs",
 };

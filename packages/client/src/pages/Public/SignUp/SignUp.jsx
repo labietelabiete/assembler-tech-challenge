@@ -55,7 +55,7 @@ export default function SignUp() {
       <div className="container bgr-primary clr-white">
         <div className="row">
           <div className="col-12">
-            <h1 className="mb-4">Sign Up</h1>
+            <h1 className="my-4">Sign Up</h1>
             <form onSubmit={formik.handleSubmit} className="row">
               <Input
                 classNames="col-12"
