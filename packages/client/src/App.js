@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddGif from "./pages/Public/AddGif";
 import SignUp from "./pages/Public/SignUp";
 import SignIn from "./pages/Public/SignIn";
-import Gif from "./pages/Public/Gif";
 import Search from "./pages/Public/Search";
 import Home from "./pages/Public/Home";
 
@@ -19,9 +18,6 @@ function App() {
         </Route>
         <Route path={PUBLIC.SIGN_IN}>
           <SignIn />
-        </Route>
-        <Route path={`${PUBLIC.GIF}/:id`}>
-          <Gif />
         </Route>
         <Route path={PUBLIC.SEARCH}>
           <Search />
